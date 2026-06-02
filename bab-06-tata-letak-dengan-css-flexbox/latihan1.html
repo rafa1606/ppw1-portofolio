@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan 1 — Warna Background Breakpoint</title>
+  <style>
+
+    /* Mobile (≤ 480px) */
+    @media (max-width: 480px) {
+      body {
+        background-color: lightgray;
+      }
+    }
+
+    /* Tablet (≤ 768px) */
+    @media (max-width: 768px) {
+      body {
+        background-color: lightblue;
+      }
+    }
+
+    /* Laptop (≤ 1024px) */
+    @media (max-width: 1024px) {
+      body {
+        background-color: lightgreen;
+      }
+    }
+
+    /* Desktop (≥ 1025px) */
+    @media (min-width: 1025px) {
+      body {
+        background-color: white;
+      }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Latihan 1 — Responsive Background Color</h1>
+  <p>Coba ubah ukuran jendela browser untuk melihat perubahan warna background:</p>
+  <ul>
+    <li>📱 Mobile (≤ 480px) → <strong>lightgray</strong></li>
+    <li>📟 Tablet (≤ 768px) → <strong>lightblue</strong></li>
+    <li>💻 Laptop (≤ 1024px) → <strong>lightgreen</strong></li>
+    <li>🖥️ Desktop (&gt; 1024px) → <strong>white</strong></li>
+  </ul>
+</body>
+</html>

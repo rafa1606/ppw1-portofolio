@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan 2 — Navbar Responsif</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* CSS navbar sesuai modul */
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 16px 24px;
+      background-color: #333;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /* Media query saat layar ≤ 768px */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    main {
+      padding: 24px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Latihan 2 — Navbar Responsif</h1>
+    <p>
+      Pada <strong>desktop</strong>, item navigasi berjajar <strong>horizontal</strong>
+      (flex-direction: row, nilai default Flexbox).
+    </p>
+    <p>
+      Saat layar diperkecil hingga <strong>≤ 768px</strong>, media query mengubah
+      flex-direction menjadi <strong>column</strong> sehingga item nav tersusun
+      secara <strong>vertikal</strong>, lebih sesuai untuk tampilan mobile.
+    </p>
+  </main>
+
+</body>
+</html>
