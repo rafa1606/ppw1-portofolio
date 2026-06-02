@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio | Rafa Irhamniyansyah Achmad</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --color-accent:      #f97316;
+      --color-accent-dark: #ea6b08;
+      --color-accent-glow: rgba(249, 115, 22, 0.25);
+      --color-dark1:       #0d0d0d;
+      --color-dark2:       #111827;
+      --color-dark3:       #0f172a;
+      --color-dark-card:   #1e293b;
+      --color-text-muted:  #94a3b8;
+      --color-text-white:  #f1f5f9;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--color-dark1);
+      color: var(--color-text-white);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-top: 64px;
+    }
+    .text-accent { color: var(--color-accent) !important; }
+    .text-muted-light { color: var(--color-text-muted); line-height: 1.7; }
+
+    /* Navbar */
+    #mainNav {
+      background-color: rgba(13, 13, 13, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(249, 115, 22, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #mainNav.nav-scrolled {
+      background-color: rgba(13, 13, 13, 0.97);
+      box-shadow: 0 2px 20px rgba(249, 115, 22, 0.12);
+    }
+    .brand-bracket { color: var(--color-accent); }
+    #mainNav .navbar-brand { font-size: 1.2rem; color: var(--color-text-white); letter-spacing: 1px; }
+    #mainNav .nav-link { color: var(--color-text-muted); font-size: 0.9rem; padding: 0.4rem 0.85rem; border-radius: 6px; transition: color 0.2s, background-color 0.2s; }
+    #mainNav .nav-link:hover, #mainNav .nav-link.active { color: var(--color-accent); background-color: rgba(249, 115, 22, 0.1); }
+
+    /* Hero */
+    .hero-section { min-height: 100vh; background-color: var(--color-dark1); position: relative; overflow: hidden; }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none; z-index: 0;
+    }
+    .hero-section .container-xl { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center;
+      background-color: rgba(249,115,22,0.12); color: var(--color-accent);
+      border: 1px solid rgba(249,115,22,0.3); border-radius: 999px;
+      padding: 0.4rem 1rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.5px;
+    }
+    .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--color-text-white); line-height: 1.15; }
+    .hero-desc { color: var(--color-text-muted); font-size: 1rem; line-height: 1.75; max-width: 520px; }
+
+    /* Avatar */
+    .avatar-wrapper { position: relative; display: inline-block; }
+    .avatar-ring {
+      position: absolute; inset: -12px; border-radius: 50%;
+      border: 2px dashed rgba(249,115,22,0.4);
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .hero-avatar { border: 4px solid var(--color-accent); box-shadow: 0 0 30px var(--color-accent-glow); position: relative; z-index: 1; }
+    .floating-badge {
+      position: absolute; bottom: -10px; right: -20px;
+      background-color: var(--color-accent); color: #fff;
+      font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.75rem;
+      border-radius: 999px; box-shadow: 0 4px 12px var(--color-accent-glow);
+      z-index: 2; animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    /* Buttons */
+    .btn-accent-main {
+      display: inline-flex; align-items: center;
+      background-color: var(--color-accent); color: #fff; font-weight: 700;
+      padding: 0.7rem 1.6rem; border-radius: 8px; text-decoration: none;
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s; font-size: 0.95rem;
+    }
+    .btn-accent-main:hover { background-color: var(--color-accent-dark); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-accent-glow); }
+    .btn-outline-accent {
+      display: inline-flex; align-items: center; background-color: transparent;
+      color: var(--color-accent); border: 2px solid var(--color-accent); font-weight: 700;
+      padding: 0.65rem 1.6rem; border-radius: 8px; text-decoration: none;
+      transition: background-color 0.2s, color 0.2s, transform 0.2s; font-size: 0.95rem;
+    }
+    .btn-outline-accent:hover { background-color: var(--color-accent); color: #fff; transform: translateY(-2px); }
+
+    /* Section */
+    .section-label { color: var(--color-accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.5rem; }
+    .section-title { color: var(--color-text-white); font-size: 2rem; font-weight: 800; }
+    .divider-accent { width: 48px; height: 3px; background-color: var(--color-accent); border-radius: 2px; }
+    .section-dark2 { background-color: var(--color-dark2); }
+    .section-dark3 { background-color: var(--color-dark3); }
+    .shadow-dark { box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+
+    /* Skill Cards */
+    .skill-card {
+      display: flex; align-items: center; gap: 0.6rem;
+      background-color: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 8px; padding: 0.65rem 1rem; color: var(--color-text-white);
+      font-size: 0.875rem; font-weight: 600;
+      transition: background-color 0.2s, border-color 0.2s, transform 0.2s; cursor: default;
+    }
+    .skill-card:hover { background-color: rgba(249,115,22,0.18); border-color: var(--color-accent); transform: translateY(-2px); }
+
+    /* Project Cards */
+    .project-card {
+      background-color: var(--color-dark-card); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.3); }
+    .project-img-wrap { position: relative; overflow: hidden; }
+    .project-img-wrap img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .project-card:hover .project-img-wrap img { transform: scale(1.05); }
+    .project-badge {
+      position: absolute; top: 12px; left: 12px;
+      background-color: var(--color-accent); color: #fff;
+      font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.65rem;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .project-body { padding: 1.25rem 1.25rem 1.5rem; }
+    .project-title { color: var(--color-text-white); font-weight: 700; margin-bottom: 0.5rem; }
+    .project-desc { color: var(--color-text-muted); font-size: 0.875rem; line-height: 1.65; }
+    .project-btn {
+      display: inline-flex; align-items: center; color: var(--color-accent);
+      font-weight: 700; font-size: 0.875rem; text-decoration: none;
+      border: 1px solid rgba(249,115,22,0.35); padding: 0.45rem 1rem;
+      border-radius: 6px; transition: background-color 0.2s, color 0.2s;
+    }
+    .project-btn:hover { background-color: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+
+    /* Footer */
+    .footer-dark { background-color: #080808; border-top: 1px solid rgba(249,115,22,0.12); }
+    .footer-brand { color: var(--color-text-white); letter-spacing: 1px; }
+    .social-link { color: var(--color-text-muted); text-decoration: none; display: inline-block; transition: color 0.2s, transform 0.2s; }
+    .social-link:hover { color: var(--color-accent); transform: translateY(-3px); }
+
+    /* Responsive */
+    @media (max-width: 767.98px) {
+      .hero-section { min-height: auto; padding: 5rem 0 4rem; }
+      body { padding-top: 56px; }
+      .hero-title { font-size: 1.85rem; }
+      .hero-desc { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+    <!-- ============================================================
+       OUTLINE STRUKTUR HTML WEBSITE PORTFOLIO PRIBADI
+       ============================================================
+
+  1. BAGIAN HEAD
+     - Berisi meta tags, title, serta memuat CDN Bootstrap CSS,
+       Bootstrap Icons, dan style CSS kustom
+
+  2. BAGIAN BODY
+     A. NAVIGATION BAR (<nav class="navbar fixed-top">)
+        - Dibungkus container-xl
+        - Teks Brand / Nama (kiri)
+        - Toggler Button (muncul saat ukuran layar mobile/tablet)
+        - Daftar Menu Navigasi (kanan): Beranda, Tentang, Proyek, Kontak
+
+     B. HERO SECTION (<section id="beranda">)
+        - Dibungkus container-xl
+        - Kolom Kiri (col-lg-7): hero-tag, judul nama, deskripsi, tombol CTA
+        - Kolom Kanan (col-lg-5): foto profil avatar melingkar + floating badge
+
+     C. TENTANG DIRI (<section id="tentang">)
+        - Dibungkus container-xl
+        - Judul Section
+        - Grid Row dibagi 2 kolom rata (col-md-6):
+          -> Kolom Kiri: Gambar ilustrasi IoT & Robotics
+          -> Kolom Kanan: Paragraf deskripsi diri + area Keahlian Teknis
+             (Grid Keahlian dibagi 2 kolom menggunakan col-6)
+
+     D. PROYEK SECTION (<section id="proyek">)
+        - Dibungkus container-xl
+        - Judul Section
+        - Grid Row dibagi 3 kolom (col-md-6 col-lg-4):
+          -> Kolom 1: Card Proyek Robot Sumo
+          -> Kolom 2: Card Proyek Robot Soccer
+          -> Kolom 3: Card Proyek Smart Environment Monitor
+          (Setiap card berisi: gambar, badge, judul, deskripsi, tombol Detail)
+
+     E. FOOTER (<footer id="kontak">)
+        - Dibungkus container-xl
+        - Layout konten terpusat di tengah (flex-column align-items-center)
+        - Nama brand
+        - Ikon Tautan Sosial Media (GitHub, LinkedIn, Instagram)
+        - Teks Copyright/Hak Cipta
+
+     F. BAGIAN SCRIPT JS
+        - Memuat Bootstrap JS Bundle dari CDN sebelum penutup tag </body>
+        - Script navbar scroll effect
+  ============================================================ -->
+
+  <!-- ============================================================
+       A. NAVIGATION BAR
+       ============================================================ -->
+  <nav class="navbar navbar-expand-md fixed-top" id="mainNav">
+    <div class="container-xl">
+      <a class="navbar-brand fw-bold" href="#beranda">
+        Rafa
+        </a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-warning fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       B. HERO SECTION
+       ============================================================ -->
+  <section id="beranda" class="hero-section d-flex align-items-center">
+    <div class="container-xl position-relative">
+      <div class="row align-items-center g-5">
+
+        <!-- Kolom kiri: Teks -->
+        <div class="col-12 col-lg-7">
+          <p class="hero-tag mb-3">
+            <i class="bi bi-cpu-fill me-2"></i>IoT &amp; Embedded Systems
+          </p>
+          <h1 class="hero-title mb-3">
+            Halo, Saya<br>
+            <span class="text-accent">Rafa Irhamniyansyah</span><br>
+            <span class="text-accent">Achmad</span>
+          </h1>
+          <p class="hero-desc mb-4">
+            Mahasiswa D-IV Teknologi Rekayasa Perangkat Lunak yang berfokus pada
+            pengembangan sistem <em>Internet of Things</em> &mdash; menghubungkan perangkat
+            fisik dengan dunia digital melalui Python, Arduino Uno, dan ESP32.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#proyek" class="btn-accent-main">
+              Lihat Proyek <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            <a href="#kontak" class="btn-outline-accent">Kontak Saya</a>
+          </div>
+        </div>
+
+        <!-- Kolom kanan: Avatar -->
+        <div class="col-12 col-lg-5 text-center">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <img src="Foto.jpeg"
+                 class="hero-avatar rounded-circle"
+                 alt="Foto Profil Rafa" width="200" height="200">
+            <div class="floating-badge">
+              <i class="bi bi-wifi"></i> IoT Dev
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hero-grid"></div>
+  </section>
+
+  <!-- ============================================================
+       C. TENTANG DIRI SECTION
+       ============================================================ -->
+  <section id="tentang" class="py-5 section-dark2">
+    <div class="container-xl">
+
+      <div class="text-center mb-5">
+        <p class="section-label">Kenali Saya</p>
+        <h2 class="section-title">Tentang Diri</h2>
+        <div class="divider-accent mx-auto mt-3"></div>
+      </div>
+
+      <div class="row align-items-center g-5">
+
+        <!-- Gambar -->
+        <div class="col-12 col-md-6">
+          <img src="Tentang.jpeg"
+               class="img-fluid rounded-3 shadow-dark" alt="IoT dan Robotika">
+        </div>
+
+        <!-- Teks + Keahlian -->
+        <div class="col-12 col-md-6">
+          <h3 class="fw-bold text-white mb-3">Siapa Saya?</h3>
+          <p class="text-muted-light mb-3">
+            Saya adalah mahasiswa Program Studi D-IV Teknologi Rekayasa Perangkat Lunak
+            di Universitas Gadjah Mada dengan minat yang kuat pada bidang
+            <span class="text-accent fw-semibold">Internet of Things (IoT)</span>.
+          </p>
+          <p class="text-muted-light mb-4">
+            Saya berpengalaman dalam membangun sistem embedded menggunakan mikrokontroler
+            Arduino Uno dan ESP32, serta mengembangkan skrip otomasi dan pemrosesan data
+            menggunakan Python. Saya percaya bahwa hardware dan software yang terintegrasi
+            dengan baik adalah kunci dari solusi IoT yang andal.
+          </p>
+
+          <h5 class="text-white fw-bold mb-3">Keahlian Teknis</h5>
+          <div class="row g-2">
+            <div class="col-6">
+              <div class="skill-card">
+                <i class="bi bi-filetype-py fs-5 text-accent"></i>
+                <span>Python</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="skill-card">
+                <i class="bi bi-motherboard fs-5 text-accent"></i>
+                <span>Arduino Uno</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="skill-card">
+                <i class="bi bi-broadcast fs-5 text-accent"></i>
+                <span>ESP32</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="skill-card">
+                <i class="bi bi-diagram-3 fs-5 text-accent"></i>
+                <span>IoT Systems</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       D. PROYEK SECTION
+       ============================================================ -->
+  <section id="proyek" class="py-5 section-dark3">
+    <div class="container-xl">
+
+      <div class="text-center mb-5">
+        <p class="section-label">Yang Telah Saya Buat</p>
+        <h2 class="section-title">Proyek Terbaru</h2>
+        <div class="divider-accent mx-auto mt-3"></div>
+      </div>
+
+      <!-- Grid: 1 kolom (mobile) → 2 tablet → 3 desktop -->
+      <div class="row g-4">
+
+        <!-- Card 1: Robot Sumo -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="project-card h-100">
+            <div class="project-img-wrap">
+              <img src="robot-sumo.jpeg"
+                   alt="Robot Sumo">
+              <span class="project-badge">Robotika</span>
+            </div>
+            <div class="project-body d-flex flex-column">
+              <h5 class="project-title">Robot Sumo</h5>
+              <p class="project-desc flex-grow-1">
+                Robot otonom berbasis Arduino Uno untuk kompetisi sumo. Dilengkapi
+                sensor infrared dan ultrasonik untuk mendeteksi lawan dan batas arena
+                secara real-time.
+              </p>
+              <a href="#" class="project-btn mt-3">
+                Lihat Detail <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Robot Soccer -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="project-card h-100">
+            <div class="project-img-wrap">
+              <img src="robot-soccer.jpeg"
+                   alt="Robot Soccer">
+              <span class="project-badge">Robotika</span>
+            </div>
+            <div class="project-body d-flex flex-column">
+              <h5 class="project-title">Robot Soccer</h5>
+              <p class="project-desc flex-grow-1">
+                Robot pemain sepak bola otonom yang mendeteksi posisi bola menggunakan
+                sensor kamera dan bergerak secara koordinatif untuk mencetak gol ke
+                gawang lawan.
+              </p>
+              <a href="#" class="project-btn mt-3">
+                Lihat Detail <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Smart Environment Monitor -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="project-card h-100">
+            <div class="project-img-wrap">
+              <img src="smart-monitor.jpeg"
+                   alt="Smart Environment Monitor">
+              <span class="project-badge">IoT</span>
+            </div>
+            <div class="project-body d-flex flex-column">
+              <h5 class="project-title">Smart Environment Monitor</h5>
+              <p class="project-desc flex-grow-1">
+                Sistem pemantauan lingkungan berbasis ESP32 yang membaca suhu,
+                kelembapan, dan kualitas udara secara real-time, lalu mengirimkan
+                data ke dashboard Python melalui koneksi Wi-Fi.
+              </p>
+              <a href="#" class="project-btn mt-3">
+                Lihat Detail <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       E. FOOTER / KONTAK
+       ============================================================ -->
+  <footer id="kontak" class="footer-dark py-5">
+    <div class="container-xl">
+      <div class="d-flex flex-column align-items-center text-center gap-4">
+
+        <p class="footer-brand fw-bold fs-5 mb-0">
+          <span class="brand-bracket">&lt;</span>Rafa<span class="brand-bracket">/&gt;</span>
+        </p>
+
+        <div class="d-flex gap-4">
+          <a href="#" class="social-link" title="GitHub">
+            <i class="bi bi-github fs-4"></i>
+          </a>
+          <a href="#" class="social-link" title="LinkedIn">
+            <i class="bi bi-linkedin fs-4"></i>
+          </a>
+          <a href="#" class="social-link" title="Instagram">
+            <i class="bi bi-instagram fs-4"></i>
+          </a>
+        </div>
+
+        <p class="text-muted small mb-0">
+          &copy; 2026 Rafa Irhamniyansyah Achmad. All rights reserved.
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 60) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
