@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <title>Kalkulator</title>
+</head>
+
+<body>
+
+  <h2>Kalkulator JavaScript</h2>
+
+  <p>
+    Bilangan Pertama: <input type="number" id="bil1"> <br><br>
+    Bilangan Kedua: <input type="number" id="bil2">
+  </p>
+
+  <button onclick="hitung('tambah')">Tambah</button>
+  <button onclick="hitung('kurang')">Kurang</button>
+  <button onclick="hitung('kali')">Kali</button>
+  <button onclick="hitung('bagi')">Bagi</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function hitung(operasi) {
+      var a = parseFloat(document.getElementById('bil1').value);
+      var b = parseFloat(document.getElementById('bil2').value);
+      var hasil;
+
+      if (operasi == 'tambah') {
+        hasil = a + b;
+      } else if (operasi == 'kurang') {
+        hasil = a - b;
+      } else if (operasi == 'kali') {
+        hasil = a * b;
+      } else if (operasi == 'bagi') {
+        if (b == 0) {
+          document.getElementById('hasil').innerHTML = "Tidak bisa membagi dengan nol!";
+          return;
+        }
+        hasil = a / b;
+      }
+
+      document.getElementById('hasil').innerHTML = "Hasil: " + hasil;
+    }
+  </script>
+
+</body>
+
+</html>
