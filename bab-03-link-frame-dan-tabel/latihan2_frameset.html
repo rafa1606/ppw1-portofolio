@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 2 - Frameset Layout</title>
+</head>
+<!-- 
+Komentar: Tag <frameset> merupakan elemen yang sudah usang (deprecated) di HTML5. 
+Fungsionalitas pembagian area layout ini kini telah direkomendasikan untuk menggunakan CSS modern (seperti CSS Grid, Flexbox) 
+atau menggunakan elemen <iframe> jika hanya ingin menyisipkan dokumen lain. 
+-->
+<frameset rows="50%, 50%">
+    <!-- 
+    Komentar: Tag <frame> juga sudah usang (deprecated) seiring dengan <frameset>. 
+    Oleh karenanya browser modern tidak merekomendasikan penggunaannya untuk struktur layout web yang baru.
+    -->
+    <frame src="frame_atas.html" name="FrameAtas">
+        <frameset cols="25%, 75%">
+            <frame src="frame_kiri.html" name="FrameKiri">
+                <frame src="frame_kanan.html" name="FrameKanan">
+        </frameset>
+</frameset>
+
+</html>

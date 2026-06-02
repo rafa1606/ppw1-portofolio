@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 9 - Web Layout dengan Tabel</title>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif;">
+
+    <!-- 
+    Komentar: Membuat layout keseluruhan antarmuka web menggunakan elemen <table> adalah praktik usang dari era web terdahulu (sebelum CSS). 
+    HTML5 berorientasi pada komponen semantik (<header>, <main>, <aside>, dll) yang ditata secara fleksibel dengan CSS Grid dan Flexbox.
+    Tabel saat ini hanya direkomendasikan secara ketat untuk menampilkan data tabular baris-kolom (seperti data laporan).
+    -->
+    <table border="0" width="100%" cellpadding="15" cellspacing="0" style="border-collapse: collapse;">
+
+        <!-- Area Header & Navigasi -->
+        <tr>
+            <td colspan="2" style="background-color: #2e7d32; color: #ffffff; text-align: center;">
+                <h1 style="margin: 0 0 10px 0;">Sistem Informasi UGM (Versi Layout Tabel)</h1>
+                <table border="0" cellpadding="5" cellspacing="0" align="center">
+                    <tr>
+                        <td bgcolor="#1b5e20"><a href="#"
+                                style="color: white; text-decoration: none; padding: 5px 15px;">Beranda</a></td>
+                        <td bgcolor="#1b5e20"><a href="#"
+                                style="color: white; text-decoration: none; padding: 5px 15px;">Profil</a></td>
+                        <td bgcolor="#1b5e20"><a href="#"
+                                style="color: white; text-decoration: none; padding: 5px 15px;">Fakultas</a></td>
+                        <td bgcolor="#1b5e20"><a href="#"
+                                style="color: white; text-decoration: none; padding: 5px 15px;">Kontak</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Area Konten Utama -->
+        <tr>
+            <!-- Area Sidebar Kiri -->
+            <td width="20%" valign="top" style="background-color: #f1f8e9; border-right: 1px solid #c8e6c9;">
+                <h3 style="color: #2e7d32; margin-top: 0;">Pengumuman</h3>
+                <ul style="padding-left: 20px; color: #333;">
+                    <li><a href="#" style="color: #1b5e20;">Pendaftaran Semester Genap</a></li>
+                    <li><a href="#" style="color: #1b5e20;">Jadwal Wisuda</a></li>
+                    <li><a href="#" style="color: #1b5e20;">Prestasi Mahasiswa</a></li>
+                    <li><a href="#" style="color: #1b5e20;">Lowongan Asisten</a></li>
+                </ul>
+            </td>
+
+            <!-- Area Iframe Eksternal -->
+            <td width="80%" valign="top">
+                <h2 style="color: #2e7d32; margin-top: 0;">Jelajahi Portal Eksternal</h2>
+                <p>Bagian konten di bawah ini dimuat melalui elemen <code>&lt;iframe&gt;</code> ke dalam sel tabel
+                    layout kami yang memiliki width 100%.</p>
+                <iframe src="https://ugm.ac.id" width="100%" height="450"
+                    style="border: 1px solid #ddd; border-radius: 4px;" title="Portal UGM"></iframe>
+            </td>
+        </tr>
+
+        <!-- Area Footer -->
+        <tr>
+            <td colspan="2" style="background-color: #1b5e20; color: #a5d6a7; text-align: center; font-size: 14px;">
+                <p style="margin: 0;">&copy; 2026 Universitas Gadjah Mada - Divisi Web Praktikum</p>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

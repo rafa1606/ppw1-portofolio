@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 6 - Tabel Sel Kosong</title>
+</head>
+
+<body style="font-family: Arial, sans-serif;">
+    <h2>Penanganan Sel Kosong dalam Tabel</h2>
+    <p>Penggunaan entitas <code>&amp;nbsp;</code> (Non-Breaking Space) untuk menampilkan sel tabel yang tidak memiliki
+        data riil agar garis/border selnya tetap terlihat rapi, terutama pada browser versi lama yang tidak secara
+        otomatis merender sel kosong.</p>
+
+    <table border="1" cellpadding="8" style="width: 50%;">
+        <tr>
+            <th>Hari</th>
+            <th>Mata Kuliah 1</th>
+            <th>Mata Kuliah 2</th>
+        </tr>
+        <tr>
+            <td>Senin</td>
+            <td>Pemrograman Web</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Selasa</td>
+            <td>&nbsp;</td>
+            <td>Basis Data</td>
+        </tr>
+        <tr>
+            <td>Rabu</td>
+            <td>Aljabar Linier</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Kamis</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 3 - Frameset Noresize</title>
+</head>
+<!-- 
+Komentar: Tag <frameset> merupakan elemen usang (deprecated) di HTML5. 
+-->
+<frameset rows="50%, 50%">
+    <!-- 
+    Komentar: Tag <frame> usang (deprecated). 
+    Fungsi atribut noresize="true" adalah untuk mengunci ukuran frame agar tidak dapat diseret/diubah batasnya oleh kursor pengguna. 
+    -->
+    <frame src="frame_atas.html" name="FrameAtas" noresize="true">
+        <frameset cols="25%, 75%">
+            <frame src="frame_kiri.html" name="FrameKiri" noresize="true">
+                <frame src="frame_kanan.html" name="FrameKanan" noresize="true">
+        </frameset>
+</frameset>
+
+</html>

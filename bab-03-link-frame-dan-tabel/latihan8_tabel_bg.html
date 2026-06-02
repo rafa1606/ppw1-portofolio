@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 8 - Tabel Background Color</title>
+</head>
+
+<body style="font-family: Arial, sans-serif;">
+    <h2>Pewarnaan Tabel (Atribut Bgcolor)</h2>
+
+    <!-- 
+    Komentar: Penggunaan atribut bgcolor pada <table>, <tr>, <th> atau <td> adalah deprecated (usang) pada standar HTML5. 
+    Praktik standar saat ini adalah menggunakan properti CSS "background-color" untuk manajemen tampilan yang lebih baik. 
+    Namun untuk tujuan pembelajaran struktur lama, atribut ini diterapkan.
+    -->
+    <table border="1" cellpadding="10" width="50%" bgcolor="#e1f5fe">
+        <!-- Pewarnaan pada baris header spesifik -->
+        <tr bgcolor="#0288d1" style="color: white;">
+            <th>Menu Masakan</th>
+            <th>Kategori</th>
+            <th>Ketersediaan</th>
+        </tr>
+        <tr>
+            <td bgcolor="#ffcdd2">Sate Ayam</td>
+            <td>Daging</td>
+            <!-- Pewarnaan pada sel (td) ini spesifik akan menimpa warna tabel keseluruhan -->
+            <td bgcolor="#ef9a9a">Kosong</td>
+        </tr>
+        <tr>
+            <td>Gado-Gado</td>
+            <td>Sayuran</td>
+            <td bgcolor="#a5d6a7">Tersedia</td>
+        </tr>
+        <tr>
+            <td>Soto Betawi</td>
+            <td>Kuah</td>
+            <td bgcolor="#a5d6a7">Tersedia</td>
+        </tr>
+    </table>
+</body>
+
+</html>

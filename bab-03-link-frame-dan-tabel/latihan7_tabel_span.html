@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 7 - Rowspan dan Colspan</title>
+</head>
+
+<body style="font-family: Arial, sans-serif;">
+    <h2>Penggabungan Sel (Colspan &amp; Rowspan)</h2>
+
+    <table border="1" cellpadding="10" style="width: 60%; text-align: center; border-collapse: collapse;">
+        <tr>
+            <!-- Colspan menggabungkan 3 kolom menjadi 1 sel besar -->
+            <th colspan="3" style="background-color: #f0f0f0;">Judul Utama Tabel (Colspan = 3)</th>
+        </tr>
+        <tr>
+            <!-- Rowspan menggabungkan 2 baris ke bawah menjadi 1 sel -->
+            <td rowspan="2" style="background-color: #e0f7fa;">Penggabungan Baris Pertama dan Kedua<br>(Rowspan = 2)
+            </td>
+            <td>Baris 2, Kolom 2</td>
+            <td>Baris 2, Kolom 3</td>
+        </tr>
+        <tr>
+            <td>Baris 3, Kolom 2</td>
+            <td>Baris 3, Kolom 3</td>
+        </tr>
+        <tr>
+            <td>Baris 4, Kolom 1</td>
+            <!-- Colspan menggabungkan 2 kolom menjadi 1 sel -->
+            <td colspan="2" style="background-color: #fff9c4;">Baris 4, Kolom 2 &amp; 3 digabung<br>(Colspan = 2)</td>
+        </tr>
+    </table>
+</body>
+
+</html>
