@@ -41,4 +41,4 @@ HTML · CSS · JavaScript · PHP · MySQL · Bootstrap
 
 ## Screenshot
 
-![Preview CRUD](bab-14-crud/screenshot.png)
+![Preview CRUD](./bab-13-dan-bab-14-php-crud-dan-manajemen-database/crud_mahasiswa/preview-crud-php-mysql.png)
