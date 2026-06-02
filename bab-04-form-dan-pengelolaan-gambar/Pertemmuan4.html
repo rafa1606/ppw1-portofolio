@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pendaftaran</title>
+</head>
+<body>
+    <h2>Form Pendaftaran Mahasiswa</h2>
+    <img src="Logo.png" width="200">
+    <br><br>
+    <form>
+        <fieldset>
+            <legend>Data Diri</legend>
+            Nama Lengkap:<br>
+            <input type="text" name="nama" placeholder="Masukkan nama"><br><br>
+            Email:<br>
+            <input type="email" name="email"><br><br>
+            Password:<br>
+            <input type="password" name="password"><br><br>
+            Jenis Kelamin:<br>
+            <input type="radio" name="jk"> Laki-laki
+            <input type="radio" name="jk"> Perempuan
+            <br><br>
+            Hobi:<br>
+            <input type="checkbox"> Musik
+            <input type="checkbox"> Olahraga
+            <input type="checkbox"> Game
+            <br><br>
+            Pilih Browser:<br>
+            <input list="browser">
+            <datalist id="browser">
+                <option value="Chrome">
+                <option value="Firefox">
+                <option value="Edge">
+                <option value="Safari">
+            </datalist>
+            <br><br>
+            Jurusan:<br>
+            <select>
+                <optgroup label="Vokasi">
+                    <option>TRPL</option>
+                    <option>TRE</option>
+                    <option>TRIK</option>
+                    <option>TRI</option>
+                </optgroup>
+                <optgroup label="Bisnis">
+                    <option>Manajemen</option>
+                    <option>Akuntansi</option>
+                </optgroup>
+            </select>
+            <br><br>
+            Alamat:<br>
+            <textarea rows="4" cols="30"></textarea>
+            <br><br>
+            <img src="kampus.JPEG" width="150">
+            <br><br>
+            <input type="submit" value="Daftar">
+        </fieldset>
+    </form>
+</body>
+</html>
