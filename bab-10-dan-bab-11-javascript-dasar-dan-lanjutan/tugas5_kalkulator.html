@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 5 - Kalkulator Sederhana</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #0d0d0d; font-family: 'Segoe UI', sans-serif;
+    }
+    h1 { color: #f97316; margin-bottom: 6px; font-size: 1.4rem; }
+    p.subtitle { color: #64748b; font-size: 0.8rem; margin-bottom: 20px; }
+
+    .kalkulator {
+      background: #1e293b;
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 16px;
+      padding: 20px;
+      width: 320px;
+      box-shadow: 0 8px 32px rgba(249,115,22,0.1);
+    }
+
+    /* Layar display */
+    .display {
+      background: #0f172a;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: right;
+      margin-bottom: 16px;
+      border: 1px solid rgba(249,115,22,0.2);
+    }
+    .display .ekspresi {
+      color: #64748b; font-size: 0.85rem; min-height: 20px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .display .angka {
+      color: #f1f5f9; font-size: 2rem; font-weight: bold;
+      min-height: 48px; word-break: break-all;
+    }
+
+    /* Grid tombol */
+    .tombol-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    button:active { transform: scale(0.95); }
+
+    /* Tipe tombol */
+    .btn-angka { background: #334155; color: #f1f5f9; }
+    .btn-angka:hover { background: #475569; }
+    .btn-operator { background: rgba(249,115,22,0.2); color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
+    .btn-operator:hover { background: rgba(249,115,22,0.35); }
+    .btn-sama { background: #f97316; color: white; }
+    .btn-sama:hover { background: #ea6b08; }
+    .btn-clear { background: rgba(220,38,38,0.2); color: #f87171; border: 1px solid rgba(220,38,38,0.3); }
+    .btn-clear:hover { background: rgba(220,38,38,0.35); }
+    .btn-del { background: rgba(249,115,22,0.1); color: #94a3b8; }
+    .btn-del:hover { background: rgba(249,115,22,0.2); }
+    .btn-nol { grid-column: span 2; }
+    .btn-persen { background: rgba(99,102,241,0.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+    .btn-persen:hover { background: rgba(99,102,241,0.35); }
+  </style>
+</head>
+<body>
+
+  <h1>Kalkulator Sederhana</h1>
+  <p class="subtitle">Rafa Irhamniyansyah Achmad | 25/557712/SV/26222</p>
+
+  <div class="kalkulator">
+
+    <!-- Display -->
+    <div class="display">
+      <div class="ekspresi" id="ekspresi"></div>
+      <div class="angka" id="layar">0</div>
+    </div>
+
+    <!-- Tombol-tombol -->
+    <div class="tombol-grid">
+
+      <!-- Baris 1 -->
+      <button class="btn-clear" onclick="hapusSemua()">AC</button>
+      <button class="btn-del"   onclick="hapusTerakhir()">⌫</button>
+      <button class="btn-persen" onclick="persen()">%</button>
+      <button class="btn-operator" onclick="inputOperator('/')">÷</button>
+
+      <!-- Baris 2 -->
+      <button class="btn-angka" onclick="inputAngka('7')">7</button>
+      <button class="btn-angka" onclick="inputAngka('8')">8</button>
+      <button class="btn-angka" onclick="inputAngka('9')">9</button>
+      <button class="btn-operator" onclick="inputOperator('*')">×</button>
+
+      <!-- Baris 3 -->
+      <button class="btn-angka" onclick="inputAngka('4')">4</button>
+      <button class="btn-angka" onclick="inputAngka('5')">5</button>
+      <button class="btn-angka" onclick="inputAngka('6')">6</button>
+      <button class="btn-operator" onclick="inputOperator('-')">−</button>
+
+      <!-- Baris 4 -->
+      <button class="btn-angka" onclick="inputAngka('1')">1</button>
+      <button class="btn-angka" onclick="inputAngka('2')">2</button>
+      <button class="btn-angka" onclick="inputAngka('3')">3</button>
+      <button class="btn-operator" onclick="inputOperator('+')">+</button>
+
+      <!-- Baris 5 -->
+      <button class="btn-angka btn-nol" onclick="inputAngka('0')">0</button>
+      <button class="btn-angka" onclick="inputTitik()">.</button>
+      <button class="btn-sama" onclick="hitungHasil()">=</button>
+
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // Variabel state kalkulator
+    // ============================================
+    var angkaSekarang = "0";   // angka yang sedang diinput
+    var angkaSebelumnya = "";  // angka sebelum operator
+    var operatorAktif = "";    // operator yang dipilih (+, -, *, /)
+    var sudahHitung = false;   // flag apakah baru saja menekan =
+
+    // ============================================
+    // Fungsi update tampilan layar
+    // ============================================
+    function updateLayar() {
+      document.getElementById("layar").innerHTML = angkaSekarang;
+      if (operatorAktif !== "") {
+        var simbolOperator = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+        document.getElementById("ekspresi").innerHTML =
+          angkaSebelumnya + " " + simbolOperator[operatorAktif];
+      } else {
+        document.getElementById("ekspresi").innerHTML = "";
+      }
+    }
+
+    // ============================================
+    // Input angka
+    // ============================================
+    function inputAngka(angka) {
+      if (sudahHitung) {
+        angkaSekarang = angka;
+        sudahHitung = false;
+      } else {
+        if (angkaSekarang === "0") {
+          angkaSekarang = angka;
+        } else {
+          if (angkaSekarang.length < 12) {
+            angkaSekarang = angkaSekarang + angka;
+          }
+        }
+      }
+      updateLayar();
+    }
+
+    // ============================================
+    // Input titik desimal
+    // ============================================
+    function inputTitik() {
+      if (sudahHitung) { angkaSekarang = "0"; sudahHitung = false; }
+      if (angkaSekarang.indexOf(".") === -1) {
+        angkaSekarang = angkaSekarang + ".";
+      }
+      updateLayar();
+    }
+
+    // ============================================
+    // Input operator
+    // ============================================
+    function inputOperator(op) {
+      if (angkaSebelumnya !== "" && !sudahHitung) {
+        hitungHasil();
+      }
+      angkaSebelumnya = angkaSekarang;
+      operatorAktif = op;
+      sudahHitung = true;
+      updateLayar();
+    }
+
+    // ============================================
+    // Hitung hasil (operator penugasan + aritmatika)
+    // ============================================
+    function hitungHasil() {
+      if (operatorAktif === "" || angkaSebelumnya === "") return;
+
+      var num1 = parseFloat(angkaSebelumnya);
+      var num2 = parseFloat(angkaSekarang);
+      var hasil = 0;
+
+      // Operator aritmatika
+      if (operatorAktif === '+') { hasil = num1 + num2; }
+      else if (operatorAktif === '-') { hasil = num1 - num2; }
+      else if (operatorAktif === '*') { hasil = num1 * num2; }
+      else if (operatorAktif === '/') {
+        if (num2 === 0) {
+          angkaSekarang = "Error";
+          operatorAktif = "";
+          angkaSebelumnya = "";
+          updateLayar();
+          return;
+        }
+        hasil = num1 / num2;
+      }
+
+      // Bulatkan untuk menghindari floating point yang panjang
+      hasil = parseFloat(hasil.toFixed(10));
+
+      console.log(num1 + " " + operatorAktif + " " + num2 + " = " + hasil);
+
+      angkaSekarang = String(hasil);
+      operatorAktif = "";
+      angkaSebelumnya = "";
+      sudahHitung = true;
+      updateLayar();
+    }
+
+    // ============================================
+    // Persen
+    // ============================================
+    function persen() {
+      var val = parseFloat(angkaSekarang);
+      angkaSekarang = String(val / 100);
+      updateLayar();
+    }
+
+    // ============================================
+    // Hapus semua (AC)
+    // ============================================
+    function hapusSemua() {
+      angkaSekarang = "0";
+      angkaSebelumnya = "";
+      operatorAktif = "";
+      sudahHitung = false;
+      updateLayar();
+    }
+
+    // ============================================
+    // Hapus karakter terakhir (backspace)
+    // ============================================
+    function hapusTerakhir() {
+      if (angkaSekarang.length > 1) {
+        angkaSekarang = angkaSekarang.slice(0, -1);
+      } else {
+        angkaSekarang = "0";
+      }
+      updateLayar();
+    }
+
+    // ============================================
+    // Keyboard support
+    // ============================================
+    document.addEventListener("keydown", function(e) {
+      if (e.key >= '0' && e.key <= '9') inputAngka(e.key);
+      else if (e.key === '.') inputTitik();
+      else if (e.key === '+') inputOperator('+');
+      else if (e.key === '-') inputOperator('-');
+      else if (e.key === '*') inputOperator('*');
+      else if (e.key === '/') { e.preventDefault(); inputOperator('/'); }
+      else if (e.key === 'Enter' || e.key === '=') hitungHasil();
+      else if (e.key === 'Backspace') hapusTerakhir();
+      else if (e.key === 'Escape') hapusSemua();
+      else if (e.key === '%') persen();
+    });
+  </script>
+
+</body>
+</html>
+

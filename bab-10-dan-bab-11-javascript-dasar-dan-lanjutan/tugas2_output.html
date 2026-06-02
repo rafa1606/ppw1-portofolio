@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 2 - Output JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      color: #f97316;
+    }
+
+    .section {
+      background: white;
+      border-left: 4px solid #f97316;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #f97316;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 4px;
+    }
+
+    button:hover {
+      background: #ea6b08;
+    }
+
+    .output-box {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 8px;
+      min-height: 30px;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tugas 2: Output JavaScript</h1>
+  <p>Nama: Rafa Irhamniyansyah Achmad | NIM: 25/557712/SV/26222</p>
+
+  <!-- 1. console.log() -->
+  <div class="section">
+    <h2>1. Fungsi <code>console.log()</code></h2>
+    <p>Menampilkan output ke console browser. Buka DevTools (F12) untuk melihat hasilnya.</p>
+    <button onclick="cobaConsoleLog()">Jalankan console.log()</button>
+    <div class="output-box" id="info-console">Klik tombol, lalu buka Console di DevTools (F12)</div>
+    <script>
+      function cobaConsoleLog() {
+        var nama = "Rafa Irhamniyansyah Achmad";
+        var nim = "25/557712/SV/26222";
+        var prodi = "Teknologi Rekayasa Perangkat Lunak";
+        console.log("=== Data Mahasiswa ===");
+        console.log("Nama  : " + nama);
+        console.log("NIM   : " + nim);
+        console.log("Prodi : " + prodi);
+        document.getElementById("info-console").innerHTML =
+          "Pesan berhasil dikirim ke console! Cek tab <strong>Console</strong> di DevTools (F12).";
+      }
+    </script>
+  </div>
+
+  <!-- 2. alert() -->
+  <div class="section">
+    <h2>2. Fungsi <code>alert()</code></h2>
+    <p>Menampilkan kotak dialog kepada pengguna.</p>
+    <button onclick="cobaAlert()">Jalankan alert()</button>
+    <script>
+      function cobaAlert() {
+        alert("Halo! Saya Rafa Irhamniyansyah Achmad.\nMahasiswa D-IV Teknologi Rekayasa Perangkat Lunak.\nMinat: Internet of Things (IoT)");
+      }
+    </script>
+  </div>
+
+  <!-- 3. document.write() -->
+  <div class="section">
+    <h2>3. Fungsi <code>document.write()</code></h2>
+    <p>Menulis langsung ke dokumen HTML. <strong>Perhatian:</strong> tombol di bawah akan menulis ulang halaman.</p>
+    <button onclick="cobaDocumentWrite()">Jalankan document.write()</button>
+    <script>
+      function cobaDocumentWrite() {
+        if (confirm("document.write() akan menulis ulang halaman. Lanjutkan?")) {
+          document.write("<h2 style='color:#f97316'>Hasil document.write()</h2>");
+          document.write("<p>Nama : <strong>Rafa Irhamniyansyah Achmad</strong><br/>");
+          document.write("NIM  : 25/557712/SV/26222<br/>");
+          document.write("Prodi: D-IV Teknologi Rekayasa Perangkat Lunak</p>");
+          document.write("<a href='tugas2_output.html'>&#8592; Kembali</a>");
+        }
+      }
+    </script>
+  </div>
+
+  <!-- 4. innerHTML -->
+  <div class="section">
+    <h2>4. <code>innerHTML</code></h2>
+    <p>Menampilkan output ke elemen HTML tertentu tanpa merefresh halaman.</p>
+    <button onclick="cobaInnerHTML()">Tampilkan via innerHTML</button>
+    <button onclick="resetInnerHTML()" style="background:#64748b;">Reset</button>
+    <div class="output-box" id="output-innerHTML">Output akan muncul di sini...</div>
+    <script>
+      function cobaInnerHTML() {
+        var keahlian = ["Python", "Arduino Uno", "ESP32", "IoT Systems"];
+        var html = "<strong>Data Mahasiswa (innerHTML):</strong><br>";
+        html += "Nama : Rafa Irhamniyansyah Achmad<br>";
+        html += "NIM  : 25/557712/SV/26222<br>";
+        html += "Keahlian: ";
+        for (var i = 0; i < keahlian.length; i++) {
+          html += "<span style='background:#f97316;color:white;padding:2px 8px;border-radius:10px;margin:2px;display:inline-block;font-size:0.8rem;'>" + keahlian[i] + "</span> ";
+        }
+        document.getElementById("output-innerHTML").innerHTML = html;
+      }
+      function resetInnerHTML() {
+        document.getElementById("output-innerHTML").innerHTML = "Output akan muncul di sini...";
+      }
+    </script>
+  </div>
+
+</body>
+
+</html>
+

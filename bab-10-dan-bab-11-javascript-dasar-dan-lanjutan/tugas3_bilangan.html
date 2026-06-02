@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 3 - Perbandingan Bilangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      background: #0d0d0d;
+      color: white;
+    }
+
+    h1 {
+      color: #f97316;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #f97316;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #ea6b08;
+    }
+
+    .result-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 8px;
+      background: #1e293b;
+      border: 1px solid #f97316;
+      text-align: center;
+      font-size: 1.1rem;
+      display: none;
+    }
+
+    .result-box.show {
+      display: block;
+    }
+
+    .bilangan {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #f97316;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tugas 3: Perbandingan Dua Bilangan</h1>
+  <p>Nama: Rafa Irhamniyansyah Achmad | NIM: 25/557712/SV/26222</p>
+  <p>Klik tombol di bawah untuk memasukkan dua bilangan, lalu program akan membandingkan keduanya.</p>
+
+  <button onclick="bandingkanBilangan()">Masukkan 2 Bilangan & Bandingkan</button>
+
+  <div class="result-box" id="hasil">
+    <div class="label">Bilangan ke-1</div>
+    <div class="bilangan" id="bil1"></div>
+    <div class="label" style="margin-top:12px;">Bilangan ke-2</div>
+    <div class="bilangan" id="bil2"></div>
+    <hr style="border-color:#f97316; margin: 16px 0;">
+    <div id="kesimpulan" style="font-size:1.2rem; font-weight:bold;"></div>
+  </div>
+
+  <script>
+    function bandingkanBilangan() {
+      // Meminta input bilangan pertama
+      var input1 = prompt("Masukkan bilangan ke-1:", "");
+      if (input1 === null || input1.trim() === "") {
+        alert("Input dibatalkan atau kosong.");
+        return;
+      }
+
+      // Meminta input bilangan kedua
+      var input2 = prompt("Masukkan bilangan ke-2:", "");
+      if (input2 === null || input2.trim() === "") {
+        alert("Input dibatalkan atau kosong.");
+        return;
+      }
+
+      // Konversi ke number
+      var bil1 = Number(input1);
+      var bil2 = Number(input2);
+
+      // Validasi apakah angka
+      if (isNaN(bil1) || isNaN(bil2)) {
+        alert("Input tidak valid! Masukkan angka yang benar.");
+        return;
+      }
+
+      // Bandingkan menggunakan operator relasi
+      var kesimpulan = "";
+      if (bil1 > bil2) {
+        kesimpulan = "BILANGAN KE-1 LEBIH BESAR DARI BILANGAN KE-2";
+      } else if (bil1 < bil2) {
+        kesimpulan = "BILANGAN KE-1 LEBIH KECIL DARI BILANGAN KE-2";
+      } else {
+        kesimpulan = "BILANGAN KE-1 SAMA DENGAN BILANGAN KE-2";
+      }
+
+      // Tampilkan hasil menggunakan innerHTML
+      document.getElementById("bil1").innerHTML = bil1;
+      document.getElementById("bil2").innerHTML = bil2;
+      document.getElementById("kesimpulan").innerHTML = kesimpulan;
+      document.getElementById("hasil").classList.add("show");
+
+      // Tampilkan juga di console
+      console.log("Bilangan 1: " + bil1);
+      console.log("Bilangan 2: " + bil2);
+      console.log("Hasil: " + kesimpulan);
+    }
+  </script>
+
+</body>
+
+</html>
+

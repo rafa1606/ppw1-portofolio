@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 1 Penulisan JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      color: #f97316;
+    }
+
+    .section {
+      background: white;
+      border-left: 4px solid #f97316;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+
+    p {
+      color: #555;
+    }
+  </style>
+
+  <!-- =============================================
+       1. EMBED: Kode JS ditulis langsung di HTML
+       ============================================= -->
+  <script>
+    // Fungsi yang dipanggil saat tombol inline diklik
+    function tampilPesan() {
+      alert("Halo! Ini adalah pesan dari JavaScript Inline.");
+    }
+  </script>
+
+  <!-- =============================================
+       3. EKSTERNAL: Memanggil file JS dari luar
+       ============================================= -->
+  <script src="script-eksternal.js"></script>
+</head>
+
+<body>
+
+  <h1>Tugas 1: Cara Penulisan JavaScript</h1>
+  <p>Nama: Rafa Irhamniyansyah Achmad | NIM: 25/557712/SV/26222</p>
+
+  <!-- Bagian 1: Embed -->
+  <div class="section">
+    <h2>1. JavaScript Embed</h2>
+    <p>Kode JavaScript ditulis langsung di dalam tag &lt;script&gt; pada file HTML.</p>
+    <div id="output-embed"></div>
+    <script>
+      // Ini adalah contoh JavaScript embed di dalam body
+      var nama = "Rafa";
+      var prodi = "Teknologi Rekayasa Perangkat Lunak";
+      document.getElementById("output-embed").innerHTML =
+        "<p>Halo, saya <strong>" + nama + "</strong> dari prodi <strong>" + prodi + "</strong>.</p>";
+    </script>
+  </div>
+
+  <!-- Bagian 2: Inline -->
+  <div class="section">
+    <h2>2. JavaScript Inline</h2>
+    <p>Kode JavaScript ditulis langsung pada atribut HTML, seperti <code>onclick</code>.</p>
+    <!-- onclick adalah contoh inline JavaScript -->
+    <button onclick="tampilPesan()"
+      style="background:#f97316; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer;">
+      Klik untuk Alert (Inline JS)
+    </button>
+    <br><br>
+    <a href="javascript:alert('Ini link dengan JavaScript Inline!')" style="color:#f97316;">
+      Klik link ini (Inline JS via href)
+    </a>
+  </div>
+
+  <!-- Bagian 3: Eksternal -->
+  <div class="section">
+    <h2>3. JavaScript Eksternal</h2>
+    <p>Kode JavaScript ditulis terpisah di file <code>script-eksternal.js</code> dan dipanggil via atribut
+      <code>src</code>.</p>
+    <div id="output-eksternal"></div>
+    <button onclick="jalankanEksternal()"
+      style="background:#0f172a; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer;">
+      Klik untuk menjalankan JS Eksternal
+    </button>
+  </div>
+
+</body>
+
+</html>
+
