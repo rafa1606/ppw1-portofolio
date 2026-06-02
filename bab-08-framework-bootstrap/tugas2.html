@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tugas 2 - Form Pendaftaran Mahasiswa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .form-card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      padding: 32px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #adb5bd;
+      padding: 20px 0;
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Departemen Teknik Elektro dan Informatika</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Pendaftaran</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Info Kampus</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- Alert sukses (tersembunyi secara default) -->
+        <div class="alert alert-success alert-dismissible fade show mb-4"
+             id="alertSukses" style="display: none !important;" role="alert">
+          <strong>Pendaftaran Berhasil!</strong> Data mahasiswa telah berhasil disimpan.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="form-card">
+
+          <h5 class="fw-bold mb-1">Formulir Pendaftaran Mahasiswa Baru</h5>
+          <p class="text-muted mb-4" style="font-size: 0.875rem;">
+            Isi seluruh data dengan benar. Tanda <span class="text-danger">*</span> wajib diisi.
+          </p>
+
+          <form id="formPendaftaran" novalidate>
+
+            <!-- Nama Lengkap & NIM (2 kolom sesuai ketentuan tugas) -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="namaLengkap" class="form-label">
+                  Nama Lengkap <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" id="namaLengkap"
+                       placeholder="Masukkan nama lengkap" required>
+                <div class="valid-feedback">Nama sudah benar.</div>
+                <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="nim" class="form-label">
+                  NIM <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" id="nim"
+                       placeholder="Contoh: 2024001" maxlength="10"
+                       pattern="[0-9]{6,10}" required>
+                <div class="valid-feedback">NIM valid.</div>
+                <div class="invalid-feedback">NIM hanya angka, 6-10 digit.</div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                Email <span class="text-danger">*</span>
+              </label>
+              <input type="email" class="form-control" id="email"
+                     placeholder="nama@email.com" required>
+              <div class="form-text">Email ini digunakan untuk notifikasi akademik.</div>
+              <div class="valid-feedback">Email valid.</div>
+              <div class="invalid-feedback">Masukkan alamat email yang valid.</div>
+            </div>
+
+            <!-- Program Studi & Semester -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="programStudi" class="form-label">
+                  Program Studi <span class="text-danger">*</span>
+                </label>
+                <select class="form-select" id="programStudi" required>
+                  <option value="">-- Pilih Program Studi --</option>
+                  <option value="trpl">Teknologi Rekayasa Perangkat Lunak</option>
+                  <option value="tri">Teknologi Rekayasa Internet</option>
+                  <option value="tre">Teknologi Rekayasa Elektro</option>
+                  <option value="trik">Teknologi Rekayasa Instrumentasi Kontrol</option>
+                </select>
+                <div class="invalid-feedback">Pilih program studi.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="semester" class="form-label">
+                  Semester <span class="text-danger">*</span>
+                </label>
+                <select class="form-select" id="semester" required>
+                  <option value="">-- Pilih Semester --</option>
+                  <option value="1">Semester 1</option>
+                  <option value="2">Semester 2</option>
+                  <option value="3">Semester 3</option>
+                  <option value="4">Semester 4</option>
+                  <option value="5">Semester 5</option>
+                  <option value="6">Semester 6</option>
+                </select>
+                <div class="invalid-feedback">Pilih semester aktif.</div>
+              </div>
+            </div>
+
+            <!-- Alamat -->
+            <div class="mb-3">
+              <label for="alamat" class="form-label">
+                Alamat <span class="text-danger">*</span>
+              </label>
+              <textarea class="form-control" id="alamat" rows="3"
+                        placeholder="Jalan, Kelurahan, Kecamatan, Kota..." required></textarea>
+              <div class="invalid-feedback">Alamat wajib diisi.</div>
+            </div>
+
+            <!-- Foto Profil -->
+            <div class="mb-4">
+              <label for="fotoProfil" class="form-label">Foto Profil</label>
+              <input type="file" class="form-control" id="fotoProfil" accept="image/*"
+                     onchange="previewFoto(this)">
+              <div class="form-text">Format: JPG, PNG. Maksimal 2 MB.</div>
+              <img id="fotoPreview" src="#" alt="Preview"
+                   class="mt-2 rounded"
+                   style="display:none; width:100px; height:100px; object-fit:cover;">
+            </div>
+
+            <hr>
+
+            <!-- Tombol Simpan & Reset dalam satu baris (d-flex + gap) -->
+            <div class="d-flex gap-2 justify-content-end">
+              <button type="button" class="btn btn-secondary"
+                      onclick="resetForm()">Reset</button>
+              <button type="submit" class="btn btn-primary">Simpan Pendaftaran</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Departemen Teknik Elektro dan Informatika. Formulir Pendaftaran Mahasiswa Baru.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Validasi form
+    document.getElementById('formPendaftaran').addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.classList.add('was-validated');
+
+      if (this.checkValidity()) {
+        const alert = document.getElementById('alertSukses');
+        alert.style.setProperty('display', 'block', 'important');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Preview foto
+    function previewFoto(input) {
+      const preview = document.getElementById('fotoPreview');
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Reset form
+    function resetForm() {
+      const form = document.getElementById('formPendaftaran');
+      form.reset();
+      form.classList.remove('was-validated');
+      document.getElementById('fotoPreview').style.display = 'none';
+      document.getElementById('alertSukses').style.setProperty('display', 'none', 'important');
+    }
+  </script>
+</body>
+</html>
+
+

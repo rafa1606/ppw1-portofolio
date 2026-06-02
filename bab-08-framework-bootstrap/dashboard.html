@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tugas 3 - Dashboard Nilai Mahasiswa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .profile-header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 36px 0;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #212529;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #6c757d;
+      text-transform: uppercase;
+    }
+
+    .table-card {
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .table-card-header {
+      background-color: #343a40;
+      color: white;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #adb5bd;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.875rem;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Departemen Teknik Elektro dan Informatika</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navDashboard">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navDashboard">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Jadwal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Keluar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="container">
+      <div class="d-flex align-items-center gap-4 flex-wrap">
+        <img src="https://ui-avatars.com/api/?name=Rizki+Maulana&size=200&background=ffffff&color=0d6efd"
+             class="avatar" alt="Foto Mahasiswa">
+        <div>
+          <h4 class="fw-bold mb-1">Rafa Irhamniyansyah Achmad</h4>
+          <p class="mb-2" style="opacity: 0.85; font-size: 0.9rem;">
+            NIU: 557712 &nbsp;|&nbsp; TRPL Semester 2 &nbsp;|&nbsp; 2025/2026
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <span class="badge bg-success">Aktif</span>
+            <span class="badge bg-light text-dark">Full Stack Developer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container my-4">
+
+    <!-- Kartu Statistik -->
+    <div class="row g-3 mb-4">
+
+      <div class="col-6 col-md-3">
+        <div class="stat-card">
+          <div class="stat-value">21</div>
+          <div class="stat-label">Total SKS</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="stat-card">
+          <div class="stat-value">3.82</div>
+          <div class="stat-label">IPK</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="stat-card">
+          <div class="stat-value">7</div>
+          <div class="stat-label">MK Lulus</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="stat-card">
+          <div class="stat-value">2</div>
+          <div class="stat-label">Semester</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tabel Nilai -->
+    <div class="table-card">
+      <div class="table-card-header">
+        Daftar Nilai - Semester 1 (Ganjil 2024/2025)
+      </div>
+      <div class="p-3">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>No</th>
+                <th>Mata Kuliah</th>
+                <th class="text-center">SKS</th>
+                <th class="text-center">Nilai Huruf</th>
+                <th class="text-center">Nilai Angka</th>
+                <th class="text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>1</td>
+                <td>Pemrograman Web 1</td>
+                <td class="text-center">3</td>
+                <td class="text-center">
+                  <span class="badge bg-success">A</span>
+                </td>
+                <td class="text-center">4.00</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Pemrograman Web 1','3','A','4.00','HTML, CSS, Bootstrap 5, JavaScript DOM','Sangat Baik','100%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>Basis Data</td>
+                <td class="text-center">3</td>
+                <td class="text-center">
+                  <span class="badge bg-success">A</span>
+                </td>
+                <td class="text-center">4.00</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Basis Data','3','A','4.00','ERD, SQL, Normalisasi, MySQL','Sangat Baik','95%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>Algoritma & Pemrograman</td>
+                <td class="text-center">4</td>
+                <td class="text-center">
+                  <span class="badge bg-primary">B+</span>
+                </td>
+                <td class="text-center">3.50</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Algoritma & Pemrograman','4','B+','3.50','Flowchart, Pseudocode, Python','Baik','90%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>4</td>
+                <td>Praktikum Pemrograman Komputer</td>
+                <td class="text-center">3</td>
+                <td class="text-center">
+                  <span class="badge bg-primary">B</span>
+                </td>
+                <td class="text-center">3.00</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Praktikum Pemrograman Komputer','3','B','3.00','OSI Layer, TCP/IP, Subnetting','Baik','88%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>5</td>
+                <td>Matematika Diskrit</td>
+                <td class="text-center">3</td>
+                <td class="text-center">
+                  <span class="badge bg-warning text-dark">C+</span>
+                </td>
+                <td class="text-center">2.50</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Matematika Diskrit','3','C+','2.50','Logika, Himpunan, Graf','Cukup','82%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>6</td>
+                <td>Bahasa Indonesia</td>
+                <td class="text-center">2</td>
+                <td class="text-center">
+                  <span class="badge bg-success">A+</span>
+                </td>
+                <td class="text-center">4.00</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Bahasa Indonesia','2','A+','4.00','Ejaan, Karya Tulis Ilmiah, Presentasi','Sangat Baik','100%')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>7</td>
+                <td>Kalkulus</td>
+                <td class="text-center">3</td>
+                <td class="text-center">
+                  <span class="badge bg-danger">D</span>
+                </td>
+                <td class="text-center">1.00</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal" data-bs-target="#modalDetail"
+                          onclick="isiModal('Kalkulus','3','D','1.00','Limit, Diferensial, Integral','Kurang','75% - Perlu Mengulang')">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+            <tfoot class="table-light">
+              <tr>
+                <td colspan="2" class="fw-bold text-end">Total / IPK</td>
+                <td class="text-center fw-bold">21 SKS</td>
+                <td colspan="2" class="text-center fw-bold">3.82</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal Detail Mata Kuliah -->
+  <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="modalDetailLabel">Detail Mata Kuliah</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-sm mb-0">
+            <tbody>
+              <tr>
+                <td class="text-muted fw-semibold" style="width:40%">Mata Kuliah</td>
+                <td id="dMatkul">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">SKS</td>
+                <td id="dSks">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">Nilai Huruf</td>
+                <td id="dNilaiHuruf">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">Nilai Angka</td>
+                <td id="dNilaiAngka">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">Topik</td>
+                <td id="dTopik">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">Predikat</td>
+                <td id="dPredikat">-</td>
+              </tr>
+              <tr>
+                <td class="text-muted fw-semibold">Kehadiran</td>
+                <td id="dKehadiran">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Departemen Teknik Elektro dan Informatika - Dashboard Akademik Mahasiswa
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function isiModal(matkul, sks, nilaiHuruf, nilaiAngka, topik, predikat, kehadiran) {
+      document.getElementById('dMatkul').textContent     = matkul;
+      document.getElementById('dSks').textContent        = sks + ' SKS';
+      document.getElementById('dNilaiAngka').textContent = nilaiAngka;
+      document.getElementById('dTopik').textContent      = topik;
+      document.getElementById('dPredikat').textContent   = predikat;
+      document.getElementById('dKehadiran').textContent  = kehadiran;
+
+      // Badge warna nilai huruf
+      const el = document.getElementById('dNilaiHuruf');
+      el.innerHTML = '';
+      const badge = document.createElement('span');
+      badge.classList.add('badge');
+      badge.textContent = nilaiHuruf;
+
+      if (nilaiHuruf.startsWith('A'))      badge.classList.add('bg-success');
+      else if (nilaiHuruf.startsWith('B')) badge.classList.add('bg-primary');
+      else if (nilaiHuruf.startsWith('C')) badge.classList.add('bg-warning', 'text-dark');
+      else                                 badge.classList.add('bg-danger');
+
+      el.appendChild(badge);
+    }
+  </script>
+</body>
+</html>
